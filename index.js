@@ -1,5 +1,4 @@
 console.log('Javascript is online');
-
 var finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
@@ -93,7 +92,7 @@ function countUniqueMonths(data) {
 var uniqueMonths = new Set();
 
 for (var i = 0; i < data.length; i++) {
-  var month = data[i][0].split('-')[0];
+  var month = data[i][0].split()[0];
   uniqueMonths.add(month);
 }
 return uniqueMonths.size;
@@ -102,3 +101,4 @@ return uniqueMonths.size;
 var numberOfMonths = countUniqueMonths(finances);
 
 console.log('Number of unique months: ', numberOfMonths)
+
