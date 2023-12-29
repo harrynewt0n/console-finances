@@ -102,3 +102,16 @@ var numberOfMonths = countUniqueMonths(finances);
 
 console.log('Number of unique months: ', numberOfMonths)
 
+function calculateTotal(data) {
+  var total = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    total += data[i][1];
+  }
+
+  return total;
+}
+
+var totalAmount = calculateTotal(finances);
+
+console.log('Net total of Profit/Losses over the entire period: $', totalAmount);
