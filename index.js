@@ -115,3 +115,30 @@ function calculateTotal(data) {
 var totalAmount = calculateTotal(finances);
 
 console.log('Net total of Profit/Losses over the entire period: $', totalAmount);
+
+function calculateTotalChangeandAverage(data) {
+  var totalChange = 0;
+  var count = 0;
+
+  for (var i = 1; i < data.length; i++) {
+    var currentAmount = data[i][1];
+    var previousAmount = [i - 1][1];
+
+    var change = currentAmount - previousAmount;
+    totalChange += change;
+    count++;
+  }
+
+  var averageChange = totalChange / count;
+
+  return {
+
+    totalChange, averageChange
+  };
+  }
+
+
+
+  console.log('Total change in profit/loss: $', totalChange);
+  console.log('Average change in profit/losses over the entire period: $', averageChange);
+
