@@ -10,7 +10,11 @@ No installation required as application is a live webpage.
 ## Usage
 To utilise this application you can visit the webpage by following this URL:
 
+https://harrynewt0n.github.io/console-finances/
+
 This should open up at webpage that looks like this:
+
+![Alt text: Instructional screenshot](Instruction-screenshot.jpeg)
 
 Once on the webpage you can navigate to the console, and view the calculations, by right clicking on the screen and selecting 'Inspect".
 ## Credits
