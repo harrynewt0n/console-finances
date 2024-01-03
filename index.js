@@ -142,9 +142,11 @@ var { totalChange, averageChange } = calculateTotalChangeAndAverage(finances);
   console.log('Total change in profit/loss: $', totalChange);
   console.log('Average change in profit/losses over the entire period: $', averageChange);
 
+
   function calculateGreatestIncrease(data) {
     var greatestIncrease = 0;
-    var greatestIncreaseMonth = '';
+    var increaseAmount = 0;
+    var increaseMonth = '';
   
     for (var i = 1; i < data.length; i++) {
       var currentAmount = data[i][1];
@@ -154,17 +156,40 @@ var { totalChange, averageChange } = calculateTotalChangeAndAverage(finances);
   
       if (change > greatestIncrease) {
         greatestIncrease = change;
-        greatestIncreaseMonth = data[i][0];
+        increaseAmount = currentAmount;
+        increaseMonth = data[i][0];
       }
     }
   
-    var sumOfGreatestIncrease = currentAmount + previousAmount;
-  
-    return { sumOfGreatestIncrease, greatestIncreaseMonth };
+    return { greatestIncrease, increaseAmount, increaseMonth };
   }
   
-  var { sumOfGreatestIncrease, greatestIncreaseMonth } = calculateGreatestIncrease(finances);
+  var { greatestIncrease, increaseAmount, increaseMonth } = calculateGreatestIncrease(finances);
   
-  console.log('Sum of the greatest increase:', sumOfGreatestIncrease);
-  console.log('Month with the greatest increase:', greatestIncreaseMonth);
+  console.log('Greatest increase in Profits/Losses:' + increaseMonth + ' ($' + greatestIncrease + ')');
 
+  function calculateGreatestDecrease(data) {
+    var greatestDecrease = 0;
+    var decreaseAmount = 0;
+    var decreaseMonth = '';
+  
+    for (var i = 1; i < data.length; i++) {
+      var currentAmount = data[i][1];
+      var previousAmount = data[i - 1][1];
+  
+      var change = previousAmount - currentAmount;
+  
+      if (change > greatestDecrease) {
+        greatestDecrease = change;
+        decreaseAmount = currentAmount;
+        decreaseMonth = data[i][0];
+      }
+    }
+  
+    return { greatestDecrease, decreaseAmount, decreaseMonth };
+  }
+  
+  var { greatestDecrease, decreaseAmount, decreaseMonth } = calculateGreatestDecrease(finances);
+  
+  console.log('Greatest decrease in Profits/Losses:' + decreaseMonth + ' ($' + greatestDecrease + ')');
+  
