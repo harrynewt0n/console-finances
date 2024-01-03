@@ -116,27 +116,6 @@ var totalAmount = calculateTotal(finances);
 
 console.log('Net total of Profit/Losses over the entire period: $', totalAmount);
 
-// function calculateTotalChangeandAverage(data) {
-//   var totalChange = 0;
-//   var count = 0;
-
-//   for (var i = 1; i < data.length; i++) {
-//     var currentAmount = data[i][1];
-//     var previousAmount = [i - 1][1];
-
-//     var change = currentAmount - previousAmount;
-//     totalChange += change;
-//     count++;
-//   }
-
-//   var averageChange = totalChange / count;
-
-//   return {
-
-//     totalChange, averageChange
-//   };
-//   }
-
 
 function calculateTotalChangeAndAverage(data) {
   var totalChange = 0;
@@ -152,16 +131,40 @@ function calculateTotalChangeAndAverage(data) {
   }
 
   var averageChange = totalChange / count;
+  
+  averageChange = parseFloat(averageChange.toFixed(2))
 
   return { totalChange, averageChange };
 }
 
 var { totalChange, averageChange } = calculateTotalChangeAndAverage(finances);
 
-console.log('Total change in numbers:', totalChange);
-console.log('Average change:', averageChange);
-
-
   console.log('Total change in profit/loss: $', totalChange);
   console.log('Average change in profit/losses over the entire period: $', averageChange);
+
+  function calculateGreatestIncrease(data) {
+    var greatestIncrease = 0;
+    var greatestIncreaseMonth = '';
+  
+    for (var i = 1; i < data.length; i++) {
+      var currentAmount = data[i][1];
+      var previousAmount = data[i - 1][1];
+  
+      var change = currentAmount - previousAmount;
+  
+      if (change > greatestIncrease) {
+        greatestIncrease = change;
+        greatestIncreaseMonth = data[i][0];
+      }
+    }
+  
+    var sumOfGreatestIncrease = currentAmount + previousAmount;
+  
+    return { sumOfGreatestIncrease, greatestIncreaseMonth };
+  }
+  
+  var { sumOfGreatestIncrease, greatestIncreaseMonth } = calculateGreatestIncrease(finances);
+  
+  console.log('Sum of the greatest increase:', sumOfGreatestIncrease);
+  console.log('Month with the greatest increase:', greatestIncreaseMonth);
 
